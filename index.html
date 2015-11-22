@@ -52,7 +52,7 @@
           <th>Logo</th>
         </thead>
         <tbody data-ng-repeat="team in teams | orderBy:'groupRank'">
-          <tr ng-if="$odd" style="background-color:red">
+          <tr>
             <td>{{$index + 1}}</td>
             <td>{{team.name | uppercase}}</td>
             <td>{{team.wins}}</td>

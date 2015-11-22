@@ -3,7 +3,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <script src="myCtrl.js"></script>
   <script src="brandNew.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="index.css">
   <head>
     <title>Angular App</title>
   </head>
@@ -42,9 +42,26 @@
     </div>
     <div ng-app="brandNew" data-ng-controller="brandNewCtrl">
       <ul>
-        <li data-ng-repeat="team in teams | orderBy:'name'">
-          {{team.name}}: {{team.wins}} - {{team.losses}} - {{team.draws}}
-        </li>
+      <table>
+        <thead>
+          <th></th>
+          <th>Country</th>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>Draws</th>
+          <th>Logo</th>
+        </thead>
+        <tbody data-ng-repeat="team in teams | orderBy:'groupRank'">
+          <tr ng-if="$odd" style="background-color:red">
+            <td>{{$index + 1}}</td>
+            <td>{{team.name | uppercase}}</td>
+            <td>{{team.wins}}</td>
+            <td>{{team.losses}}</td>
+            <td>{{team.draws}}</td>
+            <td><img ng-src={{team.logo}} /></td>
+          </tr>
+        </tbody>
+      </table>
       </ul>
     </div>
   </body>

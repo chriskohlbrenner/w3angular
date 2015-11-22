@@ -1,1 +1,27 @@
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<!DOCTYPE html>
+<html>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.firstName= "John";
+        $scope.lastName= "Doe";
+    });
+  </script>
+
+  <head>
+    <title>Angular App</title>
+  </head>
+  <body>
+    <div data-ng-app="myApp" data-ng-controller="myCtrl">
+      <h1>Angular</h1>
+      <p>Name: <input type="text" data-ng-model="name"></p>
+      <p>My name is <span data-ng-bind="name"></span></p>
+      <hr />
+      <p>The other guy's name is <span data-ng-bind="firstName"></span> <span data-ng-bind="lastName"></span></p>
+      <p>The line above is the same output as the line below (but uses {{}} instead of data-ng-bind)!</p>
+      <p>The other guy's name is {{firstName}} {{lastName}}</p>
+      <p>And now I can do math</p>
+      {{5 + 5 * 5}}
+  </body>
+</html>

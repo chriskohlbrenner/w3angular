@@ -41,28 +41,28 @@
       </p>
     </div>
     <div ng-app="brandNew" data-ng-controller="brandNewCtrl">
-      <ul>
       <table>
         <thead>
           <th></th>
-          <th>Country</th>
-          <th>Wins</th>
-          <th>Losses</th>
-          <th>Draws</th>
+          <th ng-click="sortBy('name')">Country</th>
+          <th ng-click="sortBy('wins')">Wins</th>
+          <th ng-click="sortBy('losses')">Losses</th>
+          <th ng-click="sortBy('draws')">Draws</th>
+          <th ng-click="sortBy('goalsDiff')">Differential</th>
           <th>Logo</th>
         </thead>
-        <tbody data-ng-repeat="team in teams | orderBy:'groupRank'">
+        <tbody data-ng-repeat="team in teams | orderBy:orderBy">
           <tr>
             <td>{{$index + 1}}</td>
-            <td>{{team.name | uppercase}}</td>
+            <td><a href={{team.website}}>{{team.name | uppercase}}</a></td>
             <td>{{team.wins}}</td>
             <td>{{team.losses}}</td>
             <td>{{team.draws}}</td>
+            <td>{{team.goalsDiff}}</td>
             <td><img ng-src={{team.logo}} /></td>
           </tr>
         </tbody>
       </table>
-      </ul>
     </div>
   </body>
 </html>

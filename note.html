@@ -8,7 +8,14 @@
 </head>
 <body data-ng-app="myNoteApp">
 <div data-ng-controller="myNoteCtrl">
-  {{thing1}}
+  <h1>My Awesome Note</h1>
+  <textarea placeholder="Enter note here" ng-hide="noteSaved" data-ng-model="noteContent"></textarea>
+  <p ng-hide="noteSaved">Characters remaining: {{charsRemaining()}}</p>
+  <p ng-hide="!noteSaved" data-ng-bind="noteContent"></p>
+  <br />
+  <button ng-click="saveNote()" ng-disabled="noteSaved">Save</button>
+  <button ng-click="clearNote()" ng-disabled="noteSaved">Clear</button>
+  <button ng-click="editNote()" ng-disabled="!noteSaved">Edit</button>
 </div>
 </body>
 </html>

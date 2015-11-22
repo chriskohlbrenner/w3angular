@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="myApp.js"></script>
   <script src="myCtrl.js"></script>
   <script src="brandNew.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css">
@@ -39,30 +40,30 @@
       <p>
         <span data-ng-bind="firstName | uppercase"></span> <span data-ng-bind="lastName | uppercase"></span>
       </p>
-    </div>
-    <div ng-app="brandNew" data-ng-controller="brandNewCtrl">
-      <table>
-        <thead>
-          <th></th>
-          <th ng-click="sortBy('name')">Country</th>
-          <th ng-click="sortBy('wins')">Wins</th>
-          <th ng-click="sortBy('losses')">Losses</th>
-          <th ng-click="sortBy('draws')">Draws</th>
-          <th ng-click="sortBy('goalsDiff')">Differential</th>
-          <th>Logo</th>
-        </thead>
-        <tbody data-ng-repeat="team in teams | orderBy:orderBy">
-          <tr>
-            <td>{{$index + 1}}</td>
-            <td><a href={{team.website}}>{{team.name | uppercase}}</a></td>
-            <td>{{team.wins}}</td>
-            <td>{{team.losses}}</td>
-            <td>{{team.draws}}</td>
-            <td>{{team.goalsDiff}}</td>
-            <td><img ng-src={{team.logo}} /></td>
-          </tr>
-        </tbody>
-      </table>
+      <div data-ng-controller="brandNewCtrl">
+        <table>
+          <thead>
+            <th></th>
+            <th data-ng-click="sortBy('name')">Country</th>
+            <th data-ng-click="sortBy('-wins')">Wins</th>
+            <th data-ng-click="sortBy('-losses')">Losses</th>
+            <th data-ng-click="sortBy('-draws')">Draws</th>
+            <th data-ng-click="sortBy('-goalsDiff')">Differential</th>
+            <th>Logo</th>
+          </thead>
+          <tbody data-ng-repeat="team in teams | orderBy:orderBy">
+            <tr>
+              <td>{{$index + 1}}</td>
+              <td><a href={{team.website}}>{{team.name | uppercase}}</a></td>
+              <td>{{team.wins}}</td>
+              <td>{{team.losses}}</td>
+              <td>{{team.draws}}</td>
+              <td>{{team.goalsDiff}}</td>
+              <td><img data-ng-src={{team.logo}} /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </body>
 </html>
